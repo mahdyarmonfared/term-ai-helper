@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Term-AI Studio | Natural Language Shell Command Synthesizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <h1>Term-AI <span class="badge">STUDIO</span></h1>
+          <p class="tagline">Natural Language to Shell Synthesizer & Safety Risk Analyzer</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <span class="port-tag">● Port 3028</span>
+        <div class="shell-selector" id="shellSelector">
+          <button class="shell-btn active" data-shell="pwsh">PowerShell</button>
+          <button class="shell-btn" data-shell="bash">Bash / Zsh</button>
+          <button class="shell-btn" data-shell="cmd">CMD</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Query Input Area -->
+    <section class="search-section">
+      <div class="input-card">
+        <div class="input-prefix">❯</div>
+        <input 
+          type="text" 
+          id="queryInput" 
+          class="query-input" 
+          placeholder="Ask in plain English: 'kill process on port 3000', 'undo last commit keeping files'..."
+          autofocus
+        />
+        <button id="synthBtn" class="synth-btn">Synthesize ⏎</button>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="chips-container" id="chipsContainer">
+        <!-- Dynamically rendered suggestion chips -->
+      </div>
+    </section>
+
+    <!-- Output Display Area -->
+    <main class="output-grid">
+      <!-- Primary Command Box -->
+      <div class="card command-card">
+        <div class="card-header">
+          <span class="card-title">Synthesized Shell Command</span>
+          <div class="card-actions">
+            <span id="riskBadge" class="risk-badge safe">SAFE</span>
+            <button id="copyBtn" class="btn-copy">📋 Copy Command</button>
+          </div>
+        </div>
+
+        <div class="terminal-view">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-shell-title" id="currentShellTitle">PowerShell</span>
+          </div>
+          <pre class="terminal-code"><code id="codeOutput"># Type a prompt above or click one of the suggested operations</code></pre>
+        </div>
+
+        <div class="command-description" id="cmdDescription">
+          Awaiting query...
+        </div>
+      </div>
+
+      <!-- Right Column: Breakdown & Cross-Platform -->
+      <div class="sidebar-column">
+        <!-- Cross-Platform Syntax -->
+        <div class="card alt-card">
+          <div class="card-header">
+            <span class="card-title">Cross-Platform Equivalents</span>
+          </div>
+          <div class="alt-list" id="altList">
+            <div class="alt-item">
+              <span class="alt-label">PowerShell:</span>
+              <code id="altPwsh" class="alt-code">-</code>
+            </div>
+            <div class="alt-item">
+              <span class="alt-label">Bash/Linux:</span>
+              <code id="altBash" class="alt-code">-</code>
+            </div>
+            <div class="alt-item">
+              <span class="alt-label">Windows CMD:</span>
+              <code id="altCmd" class="alt-code">-</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token Breakdown -->
+        <div class="card breakdown-card">
+          <div class="card-header">
+            <span class="card-title">Flag & Token Inspector</span>
+          </div>
+          <div class="breakdown-list" id="breakdownList">
+            <div class="empty-state">Execute a command to view detailed flag semantics.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Command copied to clipboard!</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

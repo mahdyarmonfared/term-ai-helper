@@ -1,0 +1,32 @@
+{
+  "name": "term-ai-helper",
+  "version": "1.0.0",
+  "description": "Zero-dependency natural language to shell command generator, safety risk analyzer, and interactive terminal studio for PowerShell, Bash, and CMD.",
+  "main": "src/core/index.js",
+  "bin": {
+    "term-ai": "./bin/term-ai.js",
+    "term-ai-helper": "./bin/term-ai.js"
+  },
+  "scripts": {
+    "start": "node bin/term-ai.js studio",
+    "test": "node --test test/**/*.test.js"
+  },
+  "keywords": [
+    "terminal",
+    "cli",
+    "ai-helper",
+    "shell-generator",
+    "powershell",
+    "bash",
+    "cmd",
+    "devops",
+    "risk-analyzer",
+    "zero-dependency",
+    "productivity"
+  ],
+  "author": "Mahdyar Monfared <mahdyar.monfared09@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
